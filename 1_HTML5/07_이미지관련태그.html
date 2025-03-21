@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07_이미지관련태그</title>
+</head>
+<body>
+  <h1>img 태그</h1>
+  <pre>
+    - 웹 문서에 사진, 그림 같은 이미지를 삽입하는 용도의 태그
+    [속성]
+    - src: 이미지 파일의 경로 를 지정하는 속성(파일이 있는 경로, 웹 주소)
+    - alt: 이미지 파일이 없을 때 대체 텍스트를 지정하는 속성(이미지 설명)
+    - width: 이미지의 너비를 지정하는 속성(픽셀 단위)
+    - height: 이미지의 높이를 지정하는 속성(픽셀 단위)
+    - border: 이미지 주변에 테두리를 지정하는 속성(픽셀 단위)
+    - usemap: 이미지를 클릭 가능한 맵으로 지정하는 속성
+    - ismap: 이미지를 클릭 가능한 맵으로 지정하는 속성
+    - align: 이미지의 정렬을 지정하는 속성(left, right, top, middle, bottom)
+    - hspace: 이미지의 좌우 여백을 지정하는 속성(픽셀 단위)
+    - vspace: 이미지의 상하 여백을 지정하는 속성(픽셀 단위)
+    - title: 이미지에 대한 설명을 지정하는 속성(툴팁)
+    - longdesc: 이미지에 대한 상세 설명을 지정하는 속성(웹 주소)
+    - style: 이미지에 대한 스타일을 지정하는 속성
+    - class: 이미지에 대한 스타일을 지정하는 속성
+    - id: 이미지에 대한 스타일을 지정하는 속성
+    - data-*: 사용자 정의 데이터 속성을 지정하는 속성
+    - draggable: 이미지를 드래그 가능하게 지정하는 속성
+    - ondragstart: 이미지를 드래그 시작할 때 이벤트를 지정하는 속성
+    - ondragend: 이미지를 드래그 끝날 때 이벤트를 지정하는 속성
+    - ondrag: 이미지를 드래그 중일 때 이벤트를 지정하는 속성
+    - ondragenter: 이미지를 드래그할 때 들어갈 때 이벤트를 지정하는 속성
+    - ondragleave: 이미지를 드래그할 때 나갈 때 이벤트를 지정하는 속성
+    - ondragover: 이미지를 드래그할 때 위에 있을 때 이벤트를 지정하는 속성
+    - ondrop: 이미지를 드래그할 때 놓을 때 이벤트를 지정하는 속성
+  </pre>
+
+  <h3>src 속성 확인</h3>
+  <!-- 상대 경로 : 현재 위치를 기준으로 경로 지정
+   .. : 상위 폴더
+   / : 아래, 하위, 안쪽
+   ./ : 동일 레벨
+   
+   절대경로 : 웹 사이트의 절대 경로 : 웹 사이트의 루트 폴더(/) 를 기준으로 경로 지정-->
+  <img src="../images/cats/cat1.jpg" alt="이미지1" width="200" height="200">
+
+  <hr>
+  <!-- 웹 이미지 경로(웹상 절대 경로)를 이용해서 이미지 출력-->
+
+  <img src=https://images.unsplash.com/photo-1731964877414-217cdc9b5b37?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D>
+
+  <hr><hr>
+  <h2>width, height 속성을 이용한 크기 조절(고정/가변 크기)</h2>
+  <h4> 고정 크기 단위(px) 화면의 크기와 상관 없이 지정된 값의 크기를 갖는 단위</h4>
+  <img src="../images/dogs/dog1.jpg" alt="이미지2" width="300px" height="300px">
+  <img src="../images/dogs/dog2.jpg" alt="이미지2" width="300px" height="300px">
+  <img src="../images/dogs/dog3.jpg" alt="이미지2" width="300px" height="300px">
+  <img src="../images/dogs/dog4.jpg" alt="이미지2" width="300px" height="300px">
+  <img src="../images/dogs/dog5.jpg" alt="이미지2" width="300px" height="300px">
+  <hr>
+  <h4> 가변 크기 단위(%) 화면이나 영역 기준으로 사이트 크기에 따라 이미지의 크기가 변경되는 단위</h4>
+  <img src="../images/cats/cat1.jpg" alt="이미지2" width="15%">
+  <img src="../images/cats/cat2.jpg" alt="이미지2" width="20%" height="20%">
+  <img src="../images/cats/cat3.jpg" alt="이미지2" width="20%" height="20%">
+  <img src="../images/cats/cat4.jpg" alt="이미지2" width="20%" height="20%">
+  <img src="../images/cats/cat5.jpg" alt="이미지2" width="20%" height="20%">
+  <hr>
+  <h2>alt 속성 확인</h2>
+  <img src="../images/cats/cat1.jpg" alt="고양이1" width="200" height="200">
+
+</body>
+</html>
