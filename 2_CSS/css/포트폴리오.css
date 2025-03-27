@@ -18,23 +18,22 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   margin: 0;
   padding: 0;
-  background-color: #f6f8fa; /* GitHub 배경색 */
+  background-color: #fff; /* 흰색으로 변경 */
   color: #24292e; /* 기본 텍스트 색상 */
   line-height: 1.5;
   font-size: 14px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
 }
 
 header {
   background-color: #f6f8fa; /* 밝은 회색 배경 */
   padding: 8px 16px; /* 상하 8px, 좌우 16px 패딩 */
   display: flex; /* flexbox 레이아웃 사용 */
-  justify-content: space-between; /* 각 section 간 간격 벌리기 */
+  justify-content: flex-start; /* 변경: 왼쪽부터 아이템 배치 */
   align-items: center; /* 세로 방향 중앙 정렬 */
   border-bottom: 1px solid #d1d5da; /* 하단 테두리 */
-  width: 980px; /* container 너비와 동일하게 */
   box-sizing: border-box;
 }
 
@@ -48,37 +47,23 @@ header > section:first-child { /* 메뉴 버튼 */
 }
 
 header > section:nth-child(2) { /* GitHub 로고 */
-  margin-right: 30px;
+  margin-right: 16px;
 }
 
 header > section:nth-child(3) { /* jameskim glitch 텍스트 */
   font-size: 20px;
+  margin-right: 30px; /* 추가: 오른쪽 간격 */
 }
 
 header > section:nth-child(4) { /* 검색창 */
-  margin-left: auto; /* 오른쪽으로 밀기 */
-}
-
-header > section:nth-child(4) i { /* 돋보기 아이콘 */
-  margin-right: 8px;
-  color: #586069; /* 아이콘 색상 */
-}
-
-header > section:nth-child(4) input[type="text"] { /* 검색 입력창 */
-  padding: 8px 12px;
-  border: 1px solid #d1d5da;
-  border-radius: 6px;
-  font-size: 16px;
-  color: #586069;
 }
 
 header > section.header-icons {
   display: flex; /* 내부 버튼들을 가로로 배치 */
   align-items: center; /* 세로 방향 중앙 정렬 (헤더 높이에 맞춰) */
-  margin-left: 16px; /* 검색창과의 간격 (필요에 따라 조절) */
 }
 
-header > section.header-icons button {
+header > section.header-icons > button {
   background: none; /* 버튼 배경색 없애기 */
   color: #586069; /* 아이콘 색상 */
   border: none; /* 버튼 테두리 없애기 */
@@ -86,7 +71,11 @@ header > section.header-icons button {
   margin-left: 4px; /* 버튼 사이 간격 (필요에 따라 조절) */
 }
 
-header > section.header-icons button img#avatar-logo {
+header > section.header-icons > button:first-child {
+  margin-left: 16px; /* 검색창과의 간격 */
+}
+
+header > section.header-icons > button img#avatar-logo {
   width: 20px; /* 아바타 로고 크기 조절 */
   height: 20px;
   border-radius: 50%; /* 동그랗게 만들기 */
@@ -94,95 +83,105 @@ header > section.header-icons button img#avatar-logo {
 
 
 header > section:nth-child(2) > img {
-  height: 24px; 
+  height: 24px;
 }
 
 nav.menu {
-  background-color: #f6f8fa; /* 헤더 아래 메뉴 배경색 */
-  border-bottom: 1px solid #d1d5da;
-  padding: 10px 20px;
-  width: 980px; /* container 너비와 동일하게 */
-  margin: 0 auto;
-  box-sizing: border-box;
-  display: flex;
-  gap: 20px; /* 메뉴 아이템 간 간격 */
+  width: 100%; /* 너비를 전체로 설정 */
+  background-color: #f6f8fa; /* 필요에 따라 배경색 설정 */
+  padding: 8px 16px; /* 필요에 따라 패딩 설정 */
+  box-sizing: border-box; /* 패딩과 테두리를 너비에 포함 */
+  display: flex; /* flexbox를 사용하여 내부 아이템 배치 */
+  align-items: center; /* 세로 방향으로 중앙 정렬 */
 }
 
 nav.menu a {
-  color: #586069;
-  text-decoration: none;
+  display: flex; /* flexbox를 사용하여 아이콘과 텍스트 배치 */
+  align-items: center; /* 세로 방향으로 중앙 정렬 */
+  text-decoration: none; /* 링크 밑줄 제거 */
+  color: #586069; /* 링크 텍스트 색상 */
+  margin-right: 16px; /* 링크 사이 간격 설정 */
 }
 
-nav.menu a:hover {
-  color: #0366d6;
+nav.menu a i {
+  margin-right: 8px; /* 아이콘과 텍스트 사이 간격 설정 */
 }
-
 .container {
   display: flex;
-  width: 980px;
+  /* width: 1024px; 컨테이너 너비 유지 */
   margin-top: 20px;
   padding: 0 20px;
   box-sizing: border-box;
+  margin: 20px auto 0; /* 가운데 정렬 유지 */
 }
 
+
 .left-sidebar {
-  width: 220px;
+  width: 300px;
   margin-right: 20px;
   display: flex;
   flex-direction: column;
+  border: none;
 }
 
-.left-sidebar > section {
-  width: 100%;
-  margin-bottom: 20px; /* 각 섹션 아래 간격 추가 */
-}
 
-.avatar-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 16px;
-  background-color: #fff;
-  border: 1px solid #d1d5da;
-  border-radius: 6px;
-}
-
-.avatar-info a {
-  margin-bottom: 10px;
-}
-
-.avatar-info img#avatar-logo {
-  width: 80px;
-  border-radius: 50%;
-  margin-bottom: 10px;
-}
-
-.avatar-info p {
-  margin: 5px 0;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.avatar-info a:last-child { /* Edit profile 링크 */
-  display: block;
-  width: 100%;
-  padding: 8px;
-  margin-top: 10px;
-  text-align: center;
-  color: #24292e;
-  border: 1px solid #d1d5da;
-  border-radius: 6px;
+.left-sidebar .avatar-info a .edit-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   background-color: #f6f8fa;
-  font-size: 12px;
-  font-weight: normal;
+  border: 1px solid #d1d5da;
+  border-radius: 50%;
+  width: 24px; /* 아이콘 배경 원 크기 증가 */
+  height: 24px; /* 아이콘 배경 원 크기 증가 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.avatar-info a:last-child:hover {
+.left-sidebar .avatar-info a .edit-icon i {
+  font-size: 12px; /* 아이콘 폰트 크기 증가 */
+  color: #586069; /* 아이콘 색상 유지 (필요에 따라 변경 가능) */
+}
+.left-sidebar .avatar-info a {
+  text-decoration: none; /* 아바타 링크 밑줄 제거 */
+}
+
+.left-sidebar .avatar-info a img#avatar-logo {
+  width: 240px; /* 아바타 크기 변경 */
+  height: 240px; /* 아바타 크기 변경 */
+  border-radius: 50%; /* 원형으로 만들기 */
+  margin-bottom: 8px;
+}
+
+.left-sidebar .avatar-info p:nth-child(2) { /* 사용자 이름 */
+  margin: 5px 0;
+  font-size: 16px; /* 폰트 크기 약간 키움 */
+  font-weight: normal; /* bold 제거 */
+  color: #586069; /* 회색으로 변경 */
+}
+
+.left-sidebar .avatar-info a:nth-child(3) { /* "Edit profile" 링크 선택 */
+  padding: 6px 12px; /* 패딩 값을 줄여 박스 크기 감소 */
+  border: 1px solid #d1d5da; /* 필요하다면 테두리 스타일 유지 또는 변경 */
+  border-radius: 6px; /* 필요하다면 테두리 둥글기 유지 */
+  text-decoration: none;
+  color: #586069;
+  margin-top: 8px; /* 필요에 따라 마진 조정 */
+  font-size: 12px; /* 필요에 따라 폰트 크기 조정 */
+}
+
+.left-sidebar .avatar-info a:nth-child(3):hover {
   background-color: #e1e4e8;
   text-decoration: none;
 }
 
-/* grass 섹션 스타일 (기존 스타일 유지) */
+.left-sidebar .avatar-info p:last-child { /* 팔로워/팔로잉 정보 */
+  margin: 5px 0;
+  font-size: 12px; /* 폰트 크기 약간 줄임 */
+  font-weight: normal; /* bold 제거 */
+}
+
 .grass {
   text-align: center;
   width: 100%;
@@ -190,14 +189,6 @@ nav.menu a:hover {
   border: 1px solid #d1d5da;
   border-radius: 6px;
   padding: 16px;
-}
-
-.grass > div {
-  height: 80px;
-  background-color: #ebedf0;
-  border-radius: 3px;
-  width: 80%;
-  margin: 10px auto;
 }
 
 .grass p {
@@ -218,17 +209,76 @@ nav.menu a:hover {
   display: flex;
   flex-direction: column;
 }
+header {
+  background-color: #f6f8fa;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: flex-start; /* 변경: 왼쪽부터 아이템 배치 */
+  align-items: center; /* 세로 방향 중앙 정렬 */
+  border-bottom: 1px solid #d1d5da;
+  box-sizing: border-box;
+}
 
-/* number-grid 스타일 */
-.number-grid {
-  background-color: #fff;
+header > section.left-header { /* 첫 번째 섹션 (메뉴, 로고, 이름) */
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* 추가: 오른쪽 마진을 auto로 설정하여 남은 공간을 밀어냄 */
+}
+
+header > section.header-icons { /* 두 번째 섹션 (아이콘) */
+  display: flex;
+  align-items: center;
+}
+
+header > section.header-icons > button {
+  background: none;
+  color: #586069;
+  border: none;
+  padding: 4px 8px;
+  margin-left: 4px;
+}
+
+header > section.header-icons > button:first-child {
+  margin-left: 0; /* 첫 번째 아이콘의 왼쪽 마진 제거 (선택 사항) */
+}
+
+header > section.header-icons > input[type="text"] {
+  margin-left: 16px; /* 검색창과 첫 번째 아이콘 사이 간격 조절 */
+  min-width: 150px; /* 검색창의 최소 너비 설정 (선택 사항) */
+  padding: 4px 8px;
   border: 1px solid #d1d5da;
+  border-radius: 6px;
+}
+
+/* Top repositories 스타일 수정 */
+.repositories {
+  background-color: #fff;
+  border: none;
   border-radius: 6px;
   padding: 16px;
   margin-bottom: 20px;
 }
 
-.number-grid ul {
+.repositories-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px; /* 제목과 링크 사이 간격 */
+}
+
+.repositories-header p {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.repositories-header a {
+  font-size: 12px;
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.repositories-grid {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -237,44 +287,66 @@ nav.menu a:hover {
   grid-gap: 8px; /* 격자 사이의 간격 */
 }
 
-.number-grid ul li {
+.repositories-grid li {
   border: 1px solid #d1d5da;
   border-radius: 6px;
   background-color: #f6f8fa;
-  padding: 8px;
-  text-align: center;
+  padding: 12px; /* 패딩 값 조정 */
+  text-align: left; /* 텍스트 왼쪽 정렬 */
   font-size: 14px;
+  display: flex; /* 내부 요소들을 flex로 배치 */
+  flex-direction: column; /* 세로 방향으로 요소 배치 */
 }
 
-.number-grid ul li a {
-  display: block; /* 링크 전체를 클릭 가능하게 */
+.repositories-grid li a {
+  display: block;
   color: #0366d6;
   text-decoration: none;
+  margin-bottom: 8px; /* 레포지토리 이름과 상세 정보 사이 간격 */
 }
 
-.number-grid ul li a:hover {
-  background-color: #e1e4e8;
+.repositories-grid li .repo-details {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #586069;
+  margin-top: 4px; /* 레포지토리 이름과 상세 정보 사이 간격 조정 */
 }
 
+.repositories-grid li .repo-details > span {
+  margin-right: 8px; /* 상세 정보 요소들 사이 간격 조정 */
+}
 
-.repositories {
-  background-color: #fff;
+.repositories-grid li .repo-visibility {
+  background-color: #eff3f6;
+  color: #586069;
   border: 1px solid #d1d5da;
   border-radius: 6px;
-  padding: 16px;
-  margin-bottom: 20px;
+  padding: 2px 8px;
 }
 
-.repositories p {
-  font-size: 16px;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 8px;
+.repositories-grid li .repo-language .language-color {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 4px;
 }
 
-.repositories a {
-  font-size: 12px;
-  color: #0366d6;
+.repositories-grid li .repo-language .language-color.java {
+  background-color: #b07219; /* Java 색상 (주황색) */
+}
+
+.repositories-grid li .repo-language .language-color.plsql {
+  background-color: #f1e05a; /* PLSQL 색상 (노란색) */
+}
+
+.repositories-grid li .repo-language .language-color.html {
+  background-color: #e34c26; /* HTML 색상 (빨간색) */
+}
+
+.repositories-grid li .repo-stars i {
+  margin-right: 4px;
 }
 
 .start-writing,
@@ -283,9 +355,7 @@ nav.menu a:hover {
 .code-copilot,
 .tutorial-projects,
 .collaborator-discussion,
-.activity.overview,
-.contribution.acivity,
-main > section:last-child { 
+main > section:last-child {
   background-color: #fff;
   border: 1px solid #d1d5da;
   border-radius: 6px;
@@ -298,8 +368,7 @@ main > section:last-child {
 .introduction-github h2,
 .code-copilot h2,
 .collaborator-discussion h2,
-.activity.overview p:first-child,
-.contribution.acivity button {
+main > section:last-child p {
   font-size: 16px;
   font-weight: bold;
   margin-top: 0;
@@ -310,63 +379,7 @@ main > section:last-child {
   font-weight: bold;
 }
 
-.activity.overview p {
-  margin-bottom: 8px;
-}
-
-.contribution.acivity > div {
-  margin-top: 16px;
-}
-
-.contribution.acivity > div > div {
-  margin-bottom: 16px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #eee;
-}
-
-.contribution.acivity > div > div:last-child {
-  border-bottom: none;
-}
-
-.contribution.acivity > div p {
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 8px;
-  font-size: 14px;
-}
-
-.contribution.acivity > div ul {
-  padding-left: 20px;
-}
-
-.contribution.acivity > div ul li {
-  margin-bottom: 4px;
-}
-
-.contribution.acivity > div button {
-  margin-top: 16px;
-  padding: 8px 12px;
-  border: 1px solid #d1d5da;
-  border-radius: 6px;
-  background-color: #f6f8fa;
-  font-size: 14px;
-}
-
-main > section:last-child p {
-  margin-bottom: 0;
-}
-
-/* right-sidebar 스타일 */
-.right-sidebar {
-  width: 250px;
-  margin-left: 20px;
-  position: sticky;
-  top: 0;
-  height: fit-content;
-  margin-top: 20px;
-}
-
-.right-sidebar .year-selector {
+.activity-overview {
   background-color: #fff;
   border: 1px solid #d1d5da;
   border-radius: 6px;
@@ -374,54 +387,113 @@ main > section:last-child p {
   margin-bottom: 20px;
 }
 
-.right-sidebar .year-selector h2 {
+.activity-overview-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.contribution-activity {
+  background-color: #fff;
+  border: 1px solid #d1d5da;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.contribution-activity h2 {
   font-size: 16px;
   font-weight: bold;
   margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.contribution-activity > div:nth-child(2) { /* March 2023 */
+  font-size: 14px;
+  color: #586069;
   margin-bottom: 16px;
 }
 
-.right-sidebar #year-display {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  background-color: white;
-  text-align: left;
-  cursor: default;
-  border-radius: 6px;
+.contribution-activity .activity-list > div {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eee;
 }
 
-.right-sidebar #year-options {
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+.contribution-activity .activity-list > div:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-.right-sidebar .year-option {
+.contribution-activity .activity-list p {
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.contribution-activity .activity-list ul {
+  padding-left: 20px;
+  list-style: none;
+}
+
+.contribution-activity .activity-list ul li {
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.contribution-activity .activity-list ul li i {
+  margin-right: 8px;
+  color: #586069; /* 아이콘 색상 */
+}
+
+.contribution-activity .activity-list ul li a {
+  color: #0366d6;
+  text-decoration: none;
+  flex-grow: 1;
+}
+
+.contribution-activity .activity-list ul li .progress-bar {
+  background-color: #90EE90; /* 밝은 녹색으로 변경 (LightGreen) */
+  height: 6px; /* 높이 약간 줄임 */
+  border-radius: 3px; /* 둥글기 약간 줄임 */
+  margin-left: 8px;
+}
+
+.contribution-activity .activity-list ul li .commit-count {
+  font-size: 12px;
+  color: #586069;
+  margin-left: 8px;
+}
+
+.contribution-activity .activity-list ul li .date {
+  font-size: 12px;
+  color: #586069;
+  margin-left: 8px;
+}
+
+.contribution-activity .show-more-activity {
   display: block;
-  width: 100%;
-  padding: 8px;
-  border: none;
-  background-color: transparent;
-  text-align: left;
-  cursor: pointer;
+  color: #0366d6;
+  text-decoration: none;
+  margin-top: 16px;
 }
 
-.right-sidebar .year-option:hover {
-  background-color: #eee;
+.contribution-activity .show-more-activity:hover {
+  text-decoration: underline;
 }
 
 /* footer 스타일 */
 footer {
-  background-color: #f6f8fa;
+  background-color: #fff;
   border-top: 1px solid #d1d5da;
   padding: 20px 0;
   font-size: 12px;
   color: #586069;
   text-align: center;
   margin-top: auto;
-  width: 980px;
-  margin: 20px auto 0;
   box-sizing: border-box;
 }
 
@@ -440,4 +512,83 @@ footer > section ul li {
 
 footer > section ul li a {
   color: #586069;
+  text-decoration: none; /* 푸터 링크 밑줄 제거 */
+}
+
+/* right-sidebar 스타일 */
+.right-sidebar {
+  width: 250px;
+  margin-left: 20px;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+  border-radius: 6px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: none; /* 오른쪽 사이드바 바깥 테두리 제거 */
+  background-color: #0059b3; /* 파란색으로 변경 (참고 페이지와 유사한 색상) */
+  color: white; /* 글자색 흰색으로 변경 */
+}
+
+.right-sidebar .year-selector {
+  background-color: #fff; /* 배경색 흰색 유지 */
+  border: 1px solid #d1d5da;
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 20px;
+  color: #24292e; /* 글자색 검정색 유지 */
+}
+
+.right-sidebar #year-display {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent; /* 배경색 투명하게 */
+  color: #0366d6; /* 파란색 유지 */
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between; /* 텍스트와 아이콘 양 끝으로 배치 */
+  align-items: center;
+}
+
+/* profile-header 스타일 (추가) */
+.profile-header p:first-child {
+  font-size: 14px; /* 폰트 크기 줄임 */
+  color: #586069; /* 회색으로 변경 */
+  display: flex; /* 아이콘과 텍스트를 가로로 배치하기 위해 */
+  align-items: center; /* 세로 방향으로 가운데 정렬 */
+}
+
+.profile-header p:first-child::before {
+  content: "\f044"; /* 연필 아이콘 (Font Awesome) */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px; /* 아이콘과 텍스트 사이 간격 */
+  font-size: 14px; /* 아이콘 크기 약간 키움 */
+  color: #24292e; /* 아이콘 색상 약간 진하게 변경 */
+}
+
+/* collaborator-discussion 스타일 */
+.collaborator-discussion {
+  background-color: #fff;
+  border: 1px solid #d1d5da;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.collaborator-discussion h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+/* grass 이미지 스타일 */
+.grass-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
