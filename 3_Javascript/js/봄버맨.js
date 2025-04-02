@@ -1,83 +1,52 @@
-const box = document.getElementById('box');
-const bomberman = document.getElementById('bomberman');
+let xindex = 0; // x좌표 방향대로 얼마만큼 이동했는지 기억할 변수
+let yindex = 0; // y좌표 방향대로 얼마만큼 이동했는지 기억할 변수
 
-const initialBombermanX = 200; 
-const initialBombermanY = 200; 
+document.addEventListener("keydown" , function(e) {
+  
+  const bomberman = document.querySelector("#bomberman");
 
-bomberman.style.left = `${initialBombermanX}px`;
-bomberman.style.top = `${initialBombermanY}px`;
+  console.log(e.key);
 
-let bombermanX = initialBombermanX;
-let bombermanY = initialBombermanY;
-const moveSpeed = 5; // 이동 속도 (원하는 값으로 변경)
-let isMoving = {
-  up: false,
-  down: false,
-  left: false,
-  right: false,
-};
-
-document.addEventListener('keydown', (event) => {
-  switch (event.key) {
-    case 'ArrowUp':
-      isMoving.up = true;
-      break;
-    case 'ArrowDown':
-      isMoving.down = true;
-      break;
-    case 'ArrowLeft':
-      isMoving.left = true;
-      break;
-    case 'ArrowRight':
-      isMoving.right = true;
-      break;
+  switch(e.key) {
+    case 'ArrowRight' : xindex += 10; break;
+    case 'ArrowLeft' : xindex -= 10; break;
+    case 'ArrowUp' : yindex -= 10; break;
+    case 'ArrowDown' : yindex += 10; break;
+    case 'x' : 
+    const box = document.querySelector("#box");
+    box.innerHTML +=
+    `<img src="../../images/bomb.png"
+      class="bomb"
+      style="transform: translate(${xindex}px, ${yindex}px);
+      position:absolute>"`;
+    break;
+    case 'z' : explodeBomb(); break;
+    default: alert("방향키, z, x 만 가능");
   }
+  
+  bomberman.style.transform = `translate(${xindex}px, ${yindex}px)`;
+
 });
 
-document.addEventListener('keyup', (event) => {
-  switch (event.key) {
-    case 'ArrowUp':
-      isMoving.up = false;
-      break;
-    case 'ArrowDown':
-      isMoving.down = false;
-      break;
-    case 'ArrowLeft':
-      isMoving.left = false;
-      break;
-    case 'ArrowRight':
-      isMoving.right = false;
-      break;
-  }
-});
+const explodeBomb = () => {
+  const bombs = document.querySelectorAll(".bomb");
+  // bombs 유사배열 형태
 
-function moveBomberman() {
-  if (isMoving.up) {
-    bombermanY -= moveSpeed;
+  // for .. of 문 : 
+  // 배열같은 반복 가능한 객체의 요소를 순차적으로 순회하는 반복문
+  for(let bomb of bombs) {
+    bomb.src = "../../images/boomm.png";
   }
-  if (isMoving.down) {
-    bombermanY += moveSpeed;
-  }
-  if (isMoving.left) {
-    bombermanX -= moveSpeed;
-  }
-  if (isMoving.right) {
-    bombermanX += moveSpeed;
-  }
-
-  // 게임 영역 경계 확인 (box의 크기에 따라 값 조절)
-  const boxWidth = box.offsetWidth;
-  const boxHeight = box.offsetHeight;
-  const bombermanWidth = bomberman.offsetWidth;
-  const bombermanHeight = bomberman.offsetHeight;
-
-  bombermanX = Math.max(0, Math.min(bombermanX, boxWidth - bombermanWidth));
-  bombermanY = Math.max(0, Math.min(bombermanY, boxHeight - bombermanHeight));
-
-  bomberman.style.left = `${bombermanX}px`;
-  bomberman.style.top = `${bombermanY}px`;
-
-  requestAnimationFrame(moveBomberman); // 부드러운 움직임을 위한 애니메이션 프레임 요청
 }
 
-moveBomberman(); // 움직임 함수 시작
+
+
+
+
+
+// 'x' 라는 키를 누르면 box 에 innerHTML += `<img 폭탄이미지>`
+// box.innerHTML += .. 을 실행하는 과정에서 DOM이 리렌더링됨.
+// 기존에 bomberman을 가리키던 const bomberman = document.querySelector("#bomberman");
+// 더이상 유효하지 않은 변수가 됨.
+// bomberman.style.transform = 변경된 좌표;
+// 기존변수인 bomberman은 더이상 유효한 DOM 요소가 아니기 때문에 스타일 변경이 적용X
